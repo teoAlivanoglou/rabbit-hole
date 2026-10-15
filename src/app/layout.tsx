@@ -20,7 +20,13 @@ export const metadata: Metadata = {
   description: "Rabbit Hole boilerplate",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-base-100 text-base-content">
@@ -30,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Sidebar />
             <main className="flex-1 p-6 overflow-auto">{children}</main>
           </div>
+          {modal}
         </SidebarProvider>
       </body>
     </html>
